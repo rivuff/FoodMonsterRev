@@ -141,7 +141,7 @@ export const ResturantMenu = () => {
                 className="h-36 lg:w-48 overflow-hidden rounded-md"
                 key={item.card.info.imageId}
                 src={
-                  item.card.info.imageId.length == 0
+                  item.card.info.imageId.length === 0
                     ? 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=800'
                     : IMG_CDN_URL + item.card.info.imageId
                 }
@@ -160,7 +160,7 @@ export const ResturantMenu = () => {
                   {item.card.info.description}
                 </p>
                 
-                {cartItems.findIndex((i) => i.card?.info?.id === item?.card?.info?.id)==-1?  <button 
+                {cartItems.findIndex((i) => i.card?.info?.id === item?.card?.info?.id)===-1?  <button 
                   type="button"
                   className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-1.5 mr-2 mb-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 mt-2"
                   onClick={() => addFoodItem(item)}
