@@ -5,8 +5,8 @@ import {UserState } from "../context/ContextProvider";
 
 function SignIn(){
 
-    const {login,setLogin} = UserState();
-    console.log(UserState());
+    const {logged,setLogged} = UserState();
+    //console.log(UserState());
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email: "",
@@ -32,12 +32,12 @@ function SignIn(){
                 }
             }
 
-            // const data = await axios.post(`http://localhost:3000/api/v1/login`, {email, password},res).then(()=>{
-            //     console.log("Success");
-            //     setLogin(true);
-            // })
-            const {data} = await axios.post(`http://localhost:3000/api/v1/login`,{email,password},res);
-            console.log(data);
+            const {data} = await axios.post(`http://localhost:3000/api/v1/login`, {email, password},res)
+           
+            setLogged(true);
+            localStorage.setItem('userInfo', JSON.stringify(data));
+        
+            
             // props.set(true);
         } catch (error) {
             console.log(error);
@@ -75,7 +75,7 @@ function SignIn(){
         <button type="submit" className="text-white bg-yellow-500 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-3 text-center  ml-36" onClick={postData}>Submit</button>
         </form>
         <p className="ml-20 p-2 text-gray-400 font-semibold">Don't have an account ?<Link to='/signup' 
-            className="hover:text-yellow-500 hover:underline"> Sign up</Link></p>
+            className="hover:text-yellow-500 hover:underline "> Sign up</Link></p>
     </div>
     </div>
     </>

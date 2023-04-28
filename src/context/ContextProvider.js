@@ -1,21 +1,26 @@
 import{ createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+
 const LoginContext = createContext();
 
 const ContextProvider = ({children}) => {
-    const [login, setLogin] = useState(false);
+    const [logged, setLogged] = useState(localStorage.getItem('userInfo')? true : false);
+    const [user, setUser] = useState(localStorage.getItem('userInfo') || '');
     const navigate = useNavigate();
+   
 
     useEffect(()=>{
-        if(login===true){
-            navigate('/login')
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        setUser(userInfo);
+        if(logged===true){
+            navigate('/')
         }
-        console.log(login);
-    }, [navigate, login])
+        console.log(logged);
+    }, [logged])
 
-    console.log("context",login);
-    return <LoginContext.Provider value={{login,setLogin}}>{children} </LoginContext.Provider>
+    console.log("context",logged);
+    return <LoginContext.Provider value={{logged,setLogged, user, setUser}}>{children} </LoginContext.Provider>
 
 }
 

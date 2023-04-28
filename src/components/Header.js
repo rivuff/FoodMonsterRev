@@ -5,6 +5,8 @@ import {BsFillCartCheckFill} from "react-icons/bs"
 import { FaBeer } from 'react-icons/fa';
 import SignIn from "./SignIn.js";
 import "../index.css"
+import { UserState } from "../context/ContextProvider.js";
+import Dropdown from "./DropDown.js";
 
 const Title = ()=> (
     // <h2 id='title' key='h2'>Food Monster</h2>
@@ -19,7 +21,7 @@ const Title = ()=> (
 
 
 const HeaderComponent = ()=>{
-
+    const {logged, setLogged, user} = UserState();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const login = SignIn();
 
@@ -27,6 +29,8 @@ const HeaderComponent = ()=>{
 
     const cartItems = useSelector(store => store.cart.items)
     console.log(cartItems);
+
+    
 
     return (
         <div className='flex justify-between bg-green-50 shadow-md p-3 mb-1' >
@@ -48,11 +52,21 @@ const HeaderComponent = ()=>{
                         <div>
                         {cartItems.length}
                         </div>
-                         
                    </Link>
-                </li>
-                <li className="px-3 mx-2 py-2 hover:bg-yellow-400 rounded-lg bg-yellow-300"><Link to='/login'> log in</Link></li>
                 
+                </li>
+
+                {
+                    logged ? <li>
+                       <Dropdown name={user?.res}/>
+                     </li>
+                    : <li className="px-3 mx-2 py-2 hover:bg-yellow-400 rounded-lg bg-yellow-300"><Link to='/login'> log in</Link></li>
+
+                   
+                }
+                
+                {/* <li className="px-3 mx-2 py-2 hover:bg-yellow-400 rounded-lg bg-yellow-300"><Link to='/login'> log in</Link></li> */}
+
                 {/* <li className="px-2 py-2 mx-2 hover:bg-yellow-400 rounded-lg bg-yellow-300">{isAuthenticated? <button onClick={()=>setIsAuthenticated(false)}>Log In</button> : <button onClick={()=>setIsAuthenticated(true)}>log Out</button>}
                 </li> */}
             </ul>
