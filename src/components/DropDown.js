@@ -32,7 +32,7 @@ function Dropdown(props) {
     <div className="relative">
       <button
         type="button"
-        className=" flex items-center justify-center w-full mx-2 p-2 text-sm  hover:bg-yellow-400 rounded-lg bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 text-xs"
+        className=" flex items-center justify-center w-full mx-2 p-2  hover:bg-yellow-400 rounded-lg bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 text-xs"
         onClick={toggleDropdown}
       >
         <span>{props.name}</span>
