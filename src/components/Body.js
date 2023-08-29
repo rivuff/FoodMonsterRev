@@ -26,14 +26,14 @@ const Body = () => {
 
   async function getResturants() {
     const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.519142&lng=88.373719&page_type=DESKTOP_WEB_LISTING'
+      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&page_type=DESKTOP_WEB_LISTING'
     );
 
     const json = await data.json();
 
     console.log(json);
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
   //Not rendered component (early return)
@@ -42,7 +42,7 @@ const Body = () => {
   return allRestaurants.length == 0 ? (
     <MenuShimmer />
   ) : (
-    <>
+    <div>
       <div className='mb-16'>
       <div className="p-2 mb-2 shadow-md flex justify-center bg-gray-50">
         <div className="">
@@ -75,20 +75,20 @@ const Body = () => {
         ) : (
           filteredRestaurants.map(restaurant => {
             return (
-              <>
+              <div>
                 <Link
-                  to={'/restaurant/' + restaurant.data.id}
-                  key={restaurant.data.id}
+                  to={'/restaurant/' + restaurant.info.id}
+                  key={restaurant.info.id}
                 >
-                  <RestaurantCard {...restaurant.data} />
+                  <RestaurantCard {...restaurant.info} />
                 </Link>
-              </>
+              </div>
             );
           })
         )}
       </div>
       </div>
-    </>
+    </div>
   );
 };
 

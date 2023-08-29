@@ -51,7 +51,7 @@ function SignIn(){
     return (
         <>
 
-        <div className="flex justify-center justify-items-center mt-32">
+        <div className="flex justify-center justify-items-center mt-20">
         <div className="w-full max-w-md p-4">
         <img className='h-28 m-6 ml-36'
         alt='logo' 

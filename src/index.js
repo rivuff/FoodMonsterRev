@@ -24,7 +24,7 @@ const Instamart = lazy(()=> import("./components/Instamart"))
 
 const AppLayout = ()=>{
     return (
-        <>
+        <div>
          <ContextProvider>
             <Provider store={store}>
                     <HeaderComponent/>
@@ -32,7 +32,7 @@ const AppLayout = ()=>{
                     <Footer/>   
             </Provider>
         </ContextProvider>
-        </>
+        </div>
     )
 }
 

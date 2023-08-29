@@ -56,7 +56,7 @@ const SignUp = ()=>{
 
     return (
         <>
-        <div className="flex justify-center justify-items-center mt-14 mb-4">
+        <div className="flex justify-center justify-items-center mt-4 mb-16">
             <div className="w-full max-w-md p-4">
                 <img className='h-28 m-6 ml-36'
                 alt='logo' 
@@ -98,7 +98,7 @@ const SignUp = ()=>{
                 
                 <div className="mb-6">
                     <label htmlFor="address" className="block mb-2 text-sm font-medium">address</label>
-                    <input type="address" id="address" className="border border-yellow-300 text-gray-900 text-sm rounded-md w-full p-6 focus:bg-yellow-white focus:border-yellow-500 focus:border-2 focus:outline-none"
+                    <input type="address" id="address" className="border border-yellow-300 text-gray-900 text-sm rounded-md w-full p-2 h-16 focus:bg-yellow-white focus:border-yellow-500 focus:border-2 focus:outline-none"
                     value={user.address} 
                     onChange={handleInputs}
                     required/>
